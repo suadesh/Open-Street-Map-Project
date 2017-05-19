@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>OpenStreetMapProject</title>
+
+
+<style type="text/css">
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+
+kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb
+}
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+
+<style type="text/css">
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: black;
+	background: none;
+	text-shadow: 0 1px white;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+@media print {
+	code[class*="language-"],
+	pre[class*="language-"] {
+		text-shadow: none;
+	}
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #f5f2f0;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: slategray;
+}
+
+.token.punctuation {
+	color: #999;
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+	color: #a67f59;
+	background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: #07a;
+}
+
+.token.function {
+	color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+	color: #e90;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<h1 id="toc_0">Open Street Map Project</h1>
+
+<h2 id="toc_1">Map Area</h2>
+
+<h3 id="toc_2">Rome, Italy</h3>
+
+<h4 id="toc_3">Source  https://mapzen.com/data/metro-extracts/metro/rome_italy/</h4>
+
+<p>For this study I will use the OSM XML file from Mapzen of my hometown, Rome. I am curious to perform some queries on this area. Before import the data into an SQL database , I will try to clean a bit the informations contained into this file, hoping to contribute at the openstreetmap database.               </p>
+
+<h2 id="toc_4">Encountered Problems</h2>
+
+<p>While looking into the file i will focus my attention to postal code and street&#39;s name. This is the typical issues that i have found using the clean.py code i wrote for.             </p>
+
+<h4 id="toc_5">Postal Code&#39;s Problems</h4>
+
+<ul>
+<li><p>Wrong postal code format entered  [ &#39;00184 Roma&#39; , I-00128 ] </p></li>
+<li><p>Wrong format , probably integers in state of string [ &#39;159&#39; in state of &#39;00159&#39; ]</p></li>
+<li><p>Missing of a correct value [&#39;Roma&#39; , &#39;00144;00159&#39;, &#39;001963&#39; ] </p></li>
+<li><p>Incoherent values [&#39;84010&#39; , &#39;00014&#39; , &#39;15057&#39;]</p></li>
+</ul>
+
+<h4 id="toc_6">Street Name&#39; Problems</h4>
+
+<p>In Italian language the name of the street is at the end , while it begins with the kind of street ( Via, Vicolo, Piazza , etc... ). While looking in all the data using the clean.py code , I found multiple typo and some missing values : </p>
+
+<ul>
+<li><p>Wrong spelling or typo (&#39;VIa&#39;, &#39;Vi&#39;, &#39;Vía&#39;, that should all be &#39;Via&#39;) </p></li>
+<li><p>Abbreviation (&#39;P.za&#39; instate of Piazza ) </p></li>
+<li><p>Missing values ( &#39;Alberto Caldolo&#39; in state of &#39; Via Alberto Caldolo&#39;) </p></li>
+</ul>
+
+<h2 id="toc_7">Cleaning</h2>
+
+<p>I preferred to clean it before exporting to the csv file. I use a function like these below to modify the postal code and the street address, all the code is in the clean.py file. Correctroad is a dictionary that I have created where each wrong case is the key and the values is the corrected one. Wrongzip in state is a dictionary of only the wrong zip code corrected. 
+I work these two values error in different ways, while for postal code I write a function to replace the values if wrong with the good one. For streets, I wrote a functions that splits all the word contained  in a list and replace the first one with the dictionary value , joins the new list and create a new string. 
+In order to rectify the street errors, I use two function one in the case for nodes, the other one specifically for ways nodes, because they do not have a key &quot;addr:street&quot; but &quot; name&quot;. So not all the name are streets.</p>
+
+<p>While using these functions and the rest in clean.py  I create 5 Csv files that I will now import into the SQL database. </p>
+
+<div><pre><code class="language-python">def zipcode(item,wrongzip):
+    postalcode = item.get(&#39;v&#39;)
+    if postalcode in wrongzip:
+        newcode = wrongzip[postalcode]
+    else:
+        newcode= postalcode
+    return newcode 
+
+def road(item,correctroad):
+    local = item.get(&#39;v&#39;)    
+    while True:
+        try:
+            diviso = local.split(&quot; &quot;)
+            first = diviso[0] 
+            diviso[0] = correctroad[first]
+            newlocal = &quot; &quot;.join(diviso)
+            break 
+        except KeyError:
+            newlocal = local
+            break
+    return 
+    
+def roadname(item,correctroad):
+    local = item.get(&#39;v&#39;)
+    while True:
+        try:
+            diviso = local.split(&quot; &quot;)
+            first = diviso[0]
+            if first in correctroad:
+                diviso[0] = correctroad[first]
+                newlocal = &quot; &quot;.join(diviso)
+                break
+            else:
+                newlocal = local 
+                break 
+        except KeyError:
+            newlocal = local
+            break
+    return newlocal</code></pre></div>
+
+<h2 id="toc_8">SQL DataBase</h2>
+
+<h3 id="toc_9">Postal Code</h3>
+
+<p>I will now use the sql database to verify the postal code, I will look for value where key is equal to postcode or postal_code. Supposing that errors are rare i will look for the 20 less commun results: </p>
+
+<div><pre><code class="language-sql">SELECT tags.value, COUNT(*) as num
+FROM (SELECT * FROM nodes_tags 
+      UNION ALL 
+      SELECT * FROM ways_tags) tags
+WHERE tags.key = &#39;postcode&#39; 
+OR tags.key = &#39;postal_code&#39;
+GROUP BY tags.value 
+ORDER BY num
+LIMIT 20;
+
+00014,1
+00039,1
+00063,1
+00072,1
+00078,1
+00115,1
+00144;00159,1
+001963,1
+0747,1
+2378,1
+82011,1
+84010,1
+Roma,1
+00055,2
+00057,2
+00074,2
+00077,2
+15057,2
+00036,3
+00052,3</code></pre></div>
+
+<p>Zip code in Rome are from 00118 to 00199, but there are a lot of small city all around that are contained in the area, and tat are actually part of Rome&#39;s Province , that begin with 00010 to 00079. So most of these results are actually correct.<br>
+But there are a couple of other issues, first there are postal code that do not really belong to this area and are postal code from an other region, like 84010 and 82011, and than there are some errors, like &#39;00144;00159&#39; or &#39;001963&#39;. Both should be handle one by one, like in the following cases.</p>
+
+<div><pre><code class="language-sql"># Investigating the &#39;001963 value , so i look for the ways id 
+
+SELECT id 
+FROM ways_tags 
+WHERE key=&#39;postcode&#39; 
+AND value = &#39;001963&#39;;
+
+429260650
+
+SELECT * FROM ways_tags WHERE id=429260650 and type=&#39;addr&#39;;
+
+429260650,city,Roma,addr
+429260650,street,&quot;Via Ennio Quirino Visconti&quot;,addr
+429260650,postcode,001963,addr
+429260650,housenumber,13,addrCT * FROM ways_tags WHERE id=429260650 and type=&#39;addr&#39;;
+
+# Via Ennio Quirino Visconti in Roma has a postal code of &#39;00193&#39; so this example was a typo and I will fix it 
+# With this code the correct postal code is now releted 
+
+UPDATE ways_tags 
+SET value = &#39;00193&#39; 
+WHERE id =&#39;429260650&#39; 
+AND key = &#39;postcode&#39;; 
+
+SELECT * FROM ways_tags WHERE id=429260650 and type=&#39;addr&#39;;
+
+429260650|city|Roma|addr
+429260650|street|Via Ennio Quirino Visconti|addr
+429260650|postcode|00193|addr
+429260650|housenumber|13|addr
+
+</code></pre></div>
+
+<p>So we have found some minor error in postal code that can be handled one by one , but fortunately they do not seem to be to many. Note that this last code have to be modify to correct error and especially postal code can be on tags tables of ways as well as nodes.  </p>
+
+<h3 id="toc_10">Higher frequency cities</h3>
+
+<p>I would like to look at postal code in the other way around and discover which one&#39;s have the highest frequency. </p>
+
+<div><pre><code class="language-sql">SELECT tags.value, COUNT(*) as num
+FROM (SELECT * FROM nodes_tags 
+      UNION ALL 
+      SELECT * FROM ways_tags) tags
+WHERE tags.key = &#39;postcode&#39; 
+OR tags.key = &#39;postal_code&#39;
+GROUP BY tags.value 
+ORDER BY num DESC
+LIMIT 20;
+
+00185,647
+00159,330
+00122,288
+00144,256
+00156,236
+00044,171
+00186,170
+00153,152
+00192,148
+00176,141
+00169,139
+00136,132
+00173,118
+00184,114
+00161,108
+00040,107
+00187,101
+00155,95
+00174,93
+00121,78</code></pre></div>
+
+<p>This results show us that most of the postal code are from the city center of Rome, but we have also in the top 20 the &#39;00040&#39; postal code that is &#39;Rocca di Papa&#39;. I would like to know the city with the highest frequency. </p>
+
+<div><pre><code class="language-sql">SELECT tags.value, COUNT(*) as count 
+FROM (SELECT * FROM nodes_tags UNION ALL 
+      SELECT * FROM ways_tags) tags
+WHERE tags.key == &#39;city&#39;
+GROUP BY tags.value
+ORDER BY count DESC
+LIMIT 20;
+
+Roma,8844
+Frascati,159
+Velletri,75
+Bracciano,57
+Fiumicino,34
+San Cesareo,33
+Pomezia,26
+Tivoli,25
+Ciampino,22
+Fregene,22
+Nemi,17
+Rocca di Papa,17
+Ariccia,16
+Formello,16
+Albano Laziale,14
+Anguillara Sabazia,14
+Grottaferrata,14
+Torvaianica,14
+Manziana,11
+Marino,10</code></pre></div>
+
+<p>As we can see all these cities are in Rome Area but we can see that while before we saw 107 times the postal code of &#39;Rocca di Papa&#39;, we have only 17. So it means that we have more often the name of the city in state of the postal code for tags. </p>
+
+<h2 id="toc_11">Overview Statistics</h2>
+
+<h3 id="toc_12">Size</h3>
+
+<table>
+<thead>
+<tr>
+<th>File Name</th>
+<th>Type</th>
+<th>Size</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><strong>rome_italy.osm</strong></td>
+<td><code>OSM XML</code></td>
+<td>497.9 Mb</td>
+</tr>
+<tr>
+<td><strong>rome<em>italy</em>osm.db</strong></td>
+<td><code>SQLITE DB</code></td>
+<td>260.8 Mb</td>
+</tr>
+<tr>
+<td><strong>nodes.csv</strong></td>
+<td><code>CSV</code></td>
+<td>185 Mb</td>
+</tr>
+<tr>
+<td><strong>nodes_tags.csv</strong></td>
+<td><code>CSV</code></td>
+<td>7.4 Mb</td>
+</tr>
+<tr>
+<td><strong>ways.csv</strong></td>
+<td><code>CSV</code></td>
+<td>20.1 Mb</td>
+</tr>
+<tr>
+<td><strong>ways_nodes.csv</strong></td>
+<td><code>CSV</code></td>
+<td>65.5 Mb</td>
+</tr>
+<tr>
+<td><strong>ways_tags.csv</strong></td>
+<td><code>CSV</code></td>
+<td>23 Mb</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="toc_13">Number of Unique Users</h3>
+
+<div><pre><code class="language-sql">SELECT COUNT(DISTINCT(users.uid)) as count 
+FROM (SELECT uid FROM ways UNION ALL SELECT uid FROM nodes) users;
+
+2438</code></pre></div>
+
+<h3 id="toc_14">Numbers of Nodes and Ways</h3>
+
+<div><pre><code class="language-sql">SELECT COUNT(*) as count
+FROM nodes;
+
+2226142
+
+SELECT COUNT(*) as count
+FROM ways; 
+
+331838</code></pre></div>
+
+<h3 id="toc_15">Most active users ( Top 15 )</h3>
+
+<div><pre><code class="language-sql">SELECT users.user ,  COUNT(*) as count 
+FROM (SELECT user FROM ways UNION ALL SELECT user FROM nodes) users
+GROUP BY users.user
+ORDER BY count DESC
+LIMIT 15;
+
+Davlak|324439
+Michele Aquilani|258469
+marcoSt|210525
+vlattanzi|180955
+dieterdreist|149349
+Emistrac|115334
+mcheckimport|109712
+pelatom|87357
+gnastyle|52785
+ALn_668|48128
+Mathbau|39392
+GPS-Marco|37858
+Dario Orlovich|37803
+Paolo Gianfrancesco|35428
+procuste|34823</code></pre></div>
+
+<h3 id="toc_16">Numbers of users that appeare just one time</h3>
+
+<div><pre><code class="language-sql">SELECT COUNT(*)
+FROM (SELECT users.user,COUNT(*) as count 
+       FROM (SELECT user FROM ways UNION ALL SELECT user FROM nodes) users
+       GROUP BY users.user
+       HAVING count = 1) zero;
+        
+660</code></pre></div>
+
+<p>Almost 25% of the total users have appeared just once in this dataset</p>
+
+<h3 id="toc_17">More deeper on Amenities</h3>
+
+<h4 id="toc_18">Top 20 Amenities</h4>
+
+<div><pre><code class="language-sql">SELECT value, COUNT(*) as count
+FROM nodes_tags
+WHERE key=&#39;amenity&#39;
+GROUP BY value
+ORDER BY count DESC
+LIMIT 20;
+
+drinking_water|1871
+restaurant|1633
+cafe|855
+bench|749
+bar|720
+fuel|680
+parking|446
+pharmacy|421
+fast_food|406
+bank|366
+school|200
+fountain|192
+recycling|174
+post_office|161
+bicycle_parking|156
+telephone|153
+waste_basket|145
+toilets|144
+parking_entrance|140
+place_of_worship|138</code></pre></div>
+
+<p>As we can see there are much more drinking water point than place of worship. I know Rome and i know that we can drink water everywhere but I would expected this kind of results. Rome normally has more than 900 churchs, so i guess something is missing from the file.<br>
+It very interesting also notice that for this data there are still 153 telephone, and in 2017, with smartphone era I wouldn&#39;t expect so.       </p>
+
+<h4 id="toc_19">Kind of cuisine</h4>
+
+<p>I will now take a deeper look to the kind of cuisine for the amenity restaurant, bar and cafe. </p>
+
+<div><pre><code class="language-sql">SELECT nodes_tags.value, COUNT(*) as count
+FROM nodes_tags ,(SELECT DISTINCT(id) FROM nodes_tags WHERE value=&#39;restaurant&#39;) as restaurant
+WHERE nodes_tags.id=restaurant.id
+AND nodes_tags.key=&#39;cuisine&#39;
+GROUP BY nodes_tags.value
+ORDER BY count DESC
+LIMIT 10;
+
+italian|346
+pizza|172
+regional|102
+chinese|43
+japanese|17
+italian_pizza|13
+burger|12
+italian;pizza|9
+asian|8
+fish|7
+
+SELECT nodes_tags.value, COUNT(*) as count
+FROM nodes_tags ,(SELECT DISTINCT(id) FROM nodes_tags WHERE value=&#39;bar&#39;) as restaurant
+WHERE nodes_tags.id=restaurant.id
+AND nodes_tags.key=&#39;cuisine&#39;
+GROUP BY nodes_tags.value
+ORDER BY count DESC
+LIMIT 10;
+
+italian|8
+ice_cream|3
+pizza|2
+regional|2
+bar|1
+burger;breakfast;grill;coffee_shop;friture;pasta;italian;pizza;chicken|1
+coffee_shop|1
+coffee_shop;breakfast|1
+italian;breakfast;donut;tea;coffee_shop|1
+italian_pizza;italian|1
+
+SELECT nodes_tags.value, COUNT(*) as count
+FROM nodes_tags ,(SELECT DISTINCT(id) FROM nodes_tags WHERE value=&#39;cafe&#39;) as restaurant
+WHERE nodes_tags.id=restaurant.id
+AND nodes_tags.key=&#39;cuisine&#39;
+GROUP BY nodes_tags.value
+ORDER BY count DESC
+LIMIT 10;
+
+italian|23
+ice_cream|20
+coffee_shop|11
+regional|4
+sandwich|2
+Gelateria|1
+american;bagel;breakfast;cake;sandwich|1
+bar|1
+bistro|1
+bistrot|1
+</code></pre></div>
+
+<p>It seems that in all 3 categories the most common cuisine is Italian. As foreign cuisine in Rome seems to be difficulties to find other then asian. </p>
+
+<h2 id="toc_20">Final Conclusion and further ideas</h2>
+
+<p>In general this file seems complete, It has some compiling error, but for postal code it was possible to correct almost of it, while for all the street names It can be possible to still have issue.<br>
+The file contains non only Rome, but all the area around the city.<br>
+When I looked for amenities, I found only less than 200 place of Worship, while in Rome there are more than 900 Cattolic&#39;s Church plus all the other religion. So I guess the file it can not be considered complete. And further improvement will mean add this important nodes.<br>
+I think that with the help of clean.py, the database will contain less typo errors, but sure there are also singular and specific mistake that need more dedicated attention. </p>
+
+
+
+<script type="text/javascript">
+var _self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{},Prism=function(){var e=/\blang(?:uage)?-(\w+)\b/i,t=0,n=_self.Prism={util:{encode:function(e){return e instanceof a?new a(e.type,n.util.encode(e.content),e.alias):"Array"===n.util.type(e)?e.map(n.util.encode):e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},objId:function(e){return e.__id||Object.defineProperty(e,"__id",{value:++t}),e.__id},clone:function(e){var t=n.util.type(e);switch(t){case"Object":var a={};for(var r in e)e.hasOwnProperty(r)&&(a[r]=n.util.clone(e[r]));return a;case"Array":return e.map&&e.map(function(e){return n.util.clone(e)})}return e}},languages:{extend:function(e,t){var a=n.util.clone(n.languages[e]);for(var r in t)a[r]=t[r];return a},insertBefore:function(e,t,a,r){r=r||n.languages;var l=r[e];if(2==arguments.length){a=arguments[1];for(var i in a)a.hasOwnProperty(i)&&(l[i]=a[i]);return l}var o={};for(var s in l)if(l.hasOwnProperty(s)){if(s==t)for(var i in a)a.hasOwnProperty(i)&&(o[i]=a[i]);o[s]=l[s]}return n.languages.DFS(n.languages,function(t,n){n===r[e]&&t!=e&&(this[t]=o)}),r[e]=o},DFS:function(e,t,a,r){r=r||{};for(var l in e)e.hasOwnProperty(l)&&(t.call(e,l,e[l],a||l),"Object"!==n.util.type(e[l])||r[n.util.objId(e[l])]?"Array"!==n.util.type(e[l])||r[n.util.objId(e[l])]||(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,l,r)):(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,null,r)))}},plugins:{},highlightAll:function(e,t){var a={callback:t,selector:'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'};n.hooks.run("before-highlightall",a);for(var r,l=a.elements||document.querySelectorAll(a.selector),i=0;r=l[i++];)n.highlightElement(r,e===!0,a.callback)},highlightElement:function(t,a,r){for(var l,i,o=t;o&&!e.test(o.className);)o=o.parentNode;o&&(l=(o.className.match(e)||[,""])[1],i=n.languages[l]),t.className=t.className.replace(e,"").replace(/\s+/g," ")+" language-"+l,o=t.parentNode,/pre/i.test(o.nodeName)&&(o.className=o.className.replace(e,"").replace(/\s+/g," ")+" language-"+l);var s=t.textContent,u={element:t,language:l,grammar:i,code:s};if(!s||!i)return n.hooks.run("complete",u),void 0;if(n.hooks.run("before-highlight",u),a&&_self.Worker){var c=new Worker(n.filename);c.onmessage=function(e){u.highlightedCode=e.data,n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(u.element),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},c.postMessage(JSON.stringify({language:u.language,code:u.code,immediateClose:!0}))}else u.highlightedCode=n.highlight(u.code,u.grammar,u.language),n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(t),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},highlight:function(e,t,r){var l=n.tokenize(e,t);return a.stringify(n.util.encode(l),r)},tokenize:function(e,t){var a=n.Token,r=[e],l=t.rest;if(l){for(var i in l)t[i]=l[i];delete t.rest}e:for(var i in t)if(t.hasOwnProperty(i)&&t[i]){var o=t[i];o="Array"===n.util.type(o)?o:[o];for(var s=0;s<o.length;++s){var u=o[s],c=u.inside,g=!!u.lookbehind,h=!!u.greedy,f=0,d=u.alias;u=u.pattern||u;for(var p=0;p<r.length;p++){var m=r[p];if(r.length>e.length)break e;if(!(m instanceof a)){u.lastIndex=0;var y=u.exec(m),v=1;if(!y&&h&&p!=r.length-1){var b=r[p+1].matchedStr||r[p+1],k=m+b;if(p<r.length-2&&(k+=r[p+2].matchedStr||r[p+2]),u.lastIndex=0,y=u.exec(k),!y)continue;var w=y.index+(g?y[1].length:0);if(w>=m.length)continue;var _=y.index+y[0].length,P=m.length+b.length;if(v=3,P>=_){if(r[p+1].greedy)continue;v=2,k=k.slice(0,P)}m=k}if(y){g&&(f=y[1].length);var w=y.index+f,y=y[0].slice(f),_=w+y.length,S=m.slice(0,w),O=m.slice(_),j=[p,v];S&&j.push(S);var A=new a(i,c?n.tokenize(y,c):y,d,y,h);j.push(A),O&&j.push(O),Array.prototype.splice.apply(r,j)}}}}}return r},hooks:{all:{},add:function(e,t){var a=n.hooks.all;a[e]=a[e]||[],a[e].push(t)},run:function(e,t){var a=n.hooks.all[e];if(a&&a.length)for(var r,l=0;r=a[l++];)r(t)}}},a=n.Token=function(e,t,n,a,r){this.type=e,this.content=t,this.alias=n,this.matchedStr=a||null,this.greedy=!!r};if(a.stringify=function(e,t,r){if("string"==typeof e)return e;if("Array"===n.util.type(e))return e.map(function(n){return a.stringify(n,t,e)}).join("");var l={type:e.type,content:a.stringify(e.content,t,r),tag:"span",classes:["token",e.type],attributes:{},language:t,parent:r};if("comment"==l.type&&(l.attributes.spellcheck="true"),e.alias){var i="Array"===n.util.type(e.alias)?e.alias:[e.alias];Array.prototype.push.apply(l.classes,i)}n.hooks.run("wrap",l);var o="";for(var s in l.attributes)o+=(o?" ":"")+s+'="'+(l.attributes[s]||"")+'"';return"<"+l.tag+' class="'+l.classes.join(" ")+'" '+o+">"+l.content+"</"+l.tag+">"},!_self.document)return _self.addEventListener?(_self.addEventListener("message",function(e){var t=JSON.parse(e.data),a=t.language,r=t.code,l=t.immediateClose;_self.postMessage(n.highlight(r,n.languages[a],a)),l&&_self.close()},!1),_self.Prism):_self.Prism;var r=document.currentScript||[].slice.call(document.getElementsByTagName("script")).pop();return r&&(n.filename=r.src,document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",n.highlightAll)),_self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism),"undefined"!=typeof global&&(global.Prism=Prism);
+</script>
+
+<script type="text/javascript">
+Prism.languages.sql={comment:{pattern:/(^|[^\\])(?:\/\*[\w\W]*?\*\/|(?:--|\/\/|#).*)/,lookbehind:!0},string:{pattern:/(^|[^@\\])("|')(?:\\?[\s\S])*?\2/,lookbehind:!0},variable:/@[\w.$]+|@("|'|`)(?:\\?[\s\S])+?\1/,"function":/\b(?:COUNT|SUM|AVG|MIN|MAX|FIRST|LAST|UCASE|LCASE|MID|LEN|ROUND|NOW|FORMAT)(?=\s*\()/i,keyword:/\b(?:ACTION|ADD|AFTER|ALGORITHM|ALL|ALTER|ANALYZE|ANY|APPLY|AS|ASC|AUTHORIZATION|BACKUP|BDB|BEGIN|BERKELEYDB|BIGINT|BINARY|BIT|BLOB|BOOL|BOOLEAN|BREAK|BROWSE|BTREE|BULK|BY|CALL|CASCADED?|CASE|CHAIN|CHAR VARYING|CHARACTER (?:SET|VARYING)|CHARSET|CHECK|CHECKPOINT|CLOSE|CLUSTERED|COALESCE|COLLATE|COLUMN|COLUMNS|COMMENT|COMMIT|COMMITTED|COMPUTE|CONNECT|CONSISTENT|CONSTRAINT|CONTAINS|CONTAINSTABLE|CONTINUE|CONVERT|CREATE|CROSS|CURRENT(?:_DATE|_TIME|_TIMESTAMP|_USER)?|CURSOR|DATA(?:BASES?)?|DATETIME|DBCC|DEALLOCATE|DEC|DECIMAL|DECLARE|DEFAULT|DEFINER|DELAYED|DELETE|DENY|DESC|DESCRIBE|DETERMINISTIC|DISABLE|DISCARD|DISK|DISTINCT|DISTINCTROW|DISTRIBUTED|DO|DOUBLE(?: PRECISION)?|DROP|DUMMY|DUMP(?:FILE)?|DUPLICATE KEY|ELSE|ENABLE|ENCLOSED BY|END|ENGINE|ENUM|ERRLVL|ERRORS|ESCAPE(?:D BY)?|EXCEPT|EXEC(?:UTE)?|EXISTS|EXIT|EXPLAIN|EXTENDED|FETCH|FIELDS|FILE|FILLFACTOR|FIRST|FIXED|FLOAT|FOLLOWING|FOR(?: EACH ROW)?|FORCE|FOREIGN|FREETEXT(?:TABLE)?|FROM|FULL|FUNCTION|GEOMETRY(?:COLLECTION)?|GLOBAL|GOTO|GRANT|GROUP|HANDLER|HASH|HAVING|HOLDLOCK|IDENTITY(?:_INSERT|COL)?|IF|IGNORE|IMPORT|INDEX|INFILE|INNER|INNODB|INOUT|INSERT|INT|INTEGER|INTERSECT|INTO|INVOKER|ISOLATION LEVEL|JOIN|KEYS?|KILL|LANGUAGE SQL|LAST|LEFT|LIMIT|LINENO|LINES|LINESTRING|LOAD|LOCAL|LOCK|LONG(?:BLOB|TEXT)|MATCH(?:ED)?|MEDIUM(?:BLOB|INT|TEXT)|MERGE|MIDDLEINT|MODIFIES SQL DATA|MODIFY|MULTI(?:LINESTRING|POINT|POLYGON)|NATIONAL(?: CHAR VARYING| CHARACTER(?: VARYING)?| VARCHAR)?|NATURAL|NCHAR(?: VARCHAR)?|NEXT|NO(?: SQL|CHECK|CYCLE)?|NONCLUSTERED|NULLIF|NUMERIC|OFF?|OFFSETS?|ON|OPEN(?:DATASOURCE|QUERY|ROWSET)?|OPTIMIZE|OPTION(?:ALLY)?|ORDER|OUT(?:ER|FILE)?|OVER|PARTIAL|PARTITION|PERCENT|PIVOT|PLAN|POINT|POLYGON|PRECEDING|PRECISION|PREV|PRIMARY|PRINT|PRIVILEGES|PROC(?:EDURE)?|PUBLIC|PURGE|QUICK|RAISERROR|READ(?:S SQL DATA|TEXT)?|REAL|RECONFIGURE|REFERENCES|RELEASE|RENAME|REPEATABLE|REPLICATION|REQUIRE|RESTORE|RESTRICT|RETURNS?|REVOKE|RIGHT|ROLLBACK|ROUTINE|ROW(?:COUNT|GUIDCOL|S)?|RTREE|RULE|SAVE(?:POINT)?|SCHEMA|SELECT|SERIAL(?:IZABLE)?|SESSION(?:_USER)?|SET(?:USER)?|SHARE MODE|SHOW|SHUTDOWN|SIMPLE|SMALLINT|SNAPSHOT|SOME|SONAME|START(?:ING BY)?|STATISTICS|STATUS|STRIPED|SYSTEM_USER|TABLES?|TABLESPACE|TEMP(?:ORARY|TABLE)?|TERMINATED BY|TEXT(?:SIZE)?|THEN|TIMESTAMP|TINY(?:BLOB|INT|TEXT)|TOP?|TRAN(?:SACTIONS?)?|TRIGGER|TRUNCATE|TSEQUAL|TYPES?|UNBOUNDED|UNCOMMITTED|UNDEFINED|UNION|UNIQUE|UNPIVOT|UPDATE(?:TEXT)?|USAGE|USE|USER|USING|VALUES?|VAR(?:BINARY|CHAR|CHARACTER|YING)|VIEW|WAITFOR|WARNINGS|WHEN|WHERE|WHILE|WITH(?: ROLLUP|IN)?|WORK|WRITE(?:TEXT)?)\b/i,"boolean":/\b(?:TRUE|FALSE|NULL)\b/i,number:/\b-?(?:0x)?\d*\.?[\da-f]+\b/,operator:/[-+*\/=%^~]|&&?|\|?\||!=?|<(?:=>?|<|>)?|>[>=]?|\b(?:AND|BETWEEN|IN|LIKE|NOT|OR|IS|DIV|REGEXP|RLIKE|SOUNDS LIKE|XOR)\b/i,punctuation:/[;[\]()`,.]/};
+</script>
+
+<script type="text/javascript">
+Prism.languages.python={"triple-quoted-string":{pattern:/"""[\s\S]+?"""|'''[\s\S]+?'''/,alias:"string"},comment:{pattern:/(^|[^\\])#.*/,lookbehind:!0},string:/("|')(?:\\?.)*?\1/,"function":{pattern:/((?:^|\s)def[ \t]+)[a-zA-Z_][a-zA-Z0-9_]*(?=\()/g,lookbehind:!0},"class-name":{pattern:/(\bclass\s+)[a-z0-9_]+/i,lookbehind:!0},keyword:/\b(?:as|assert|async|await|break|class|continue|def|del|elif|else|except|exec|finally|for|from|global|if|import|in|is|lambda|pass|print|raise|return|try|while|with|yield)\b/,"boolean":/\b(?:True|False)\b/,number:/\b-?(?:0[bo])?(?:(?:\d|0x[\da-f])[\da-f]*\.?\d*|\.\d+)(?:e[+-]?\d+)?j?\b/i,operator:/[-+%=]=?|!=|\*\*?=?|\/\/?=?|<[<=>]?|>[=>]?|[&|^~]|\b(?:or|and|not)\b/,punctuation:/[{}[\];(),.:]/};
+</script>
+
+
+</body>
+
+</html>
