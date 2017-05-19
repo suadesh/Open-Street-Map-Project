@@ -52,7 +52,7 @@ WHERE tags.key = 'postcode'
 OR tags.key = 'postal_code'
 GROUP BY tags.value 
 ORDER BY num DESC
-LIMIT 20;
+LIMIT 10;
 
 ## CITY WITH HIGER FREQUENCY 
 
@@ -82,13 +82,6 @@ SELECT COUNT(*) as count
 FROM ways; 
 
 
-## TOP 15 USER
-
-SELECT users.user ,  COUNT(*) as count 
-FROM (SELECT user FROM ways UNION ALL SELECT user FROM nodes) users
-GROUP BY users.user
-ORDER BY count DESC
-LIMIT 15;
 
 ## Numer of users that apper just one time , i will use the code writter befor and usinf it for FROM 
 
@@ -115,26 +108,8 @@ WHERE nodes_tags.id=restaurant.id
 AND nodes_tags.key='cuisine'
 GROUP BY nodes_tags.value
 ORDER BY count DESC
-LIMIT 10;
+LIMIT 5;
 
-
-SELECT nodes_tags.value, COUNT(*) as count
-FROM nodes_tags ,(SELECT DISTINCT(id) FROM nodes_tags WHERE value='bar') as restaurant
-WHERE nodes_tags.id=restaurant.id
-AND nodes_tags.key='cuisine'
-GROUP BY nodes_tags.value
-ORDER BY count DESC
-LIMIT 10;
-
-
-
-SELECT nodes_tags.value, COUNT(*) as count
-FROM nodes_tags ,(SELECT DISTINCT(id) FROM nodes_tags WHERE value='cafe') as restaurant
-WHERE nodes_tags.id=restaurant.id
-AND nodes_tags.key='cuisine'
-GROUP BY nodes_tags.value
-ORDER BY count DESC
-LIMIT 10;
 
 
 
