@@ -77,37 +77,8 @@ Roma,1
 ~~~  
 
 Zip code in Rome are from 00118 to 00199, but there are a lot of small city all around that are contained in the area, and tat are actually part of Rome's Province , that begin with 00010 to 00079. So most of these results are actually correct.                      
-But there are a couple of other issues, first there are postal code that do not really belong to this area and are postal code from an other region, like 84010 and 82011, and than there are some errors, like '00144;00159' or '001963'. Both should be handle one by one, like in the following cases.              
-
-~~~sql
-# Investigating the '001963 value , so i look for the ways id 
-
-SELECT id 
-FROM ways_tags 
-WHERE key='postcode' 
-AND value = '001963';
-
-429260650
-
-SELECT * FROM ways_tags WHERE id=429260650 and type='addr';
-
-429260650,city,Roma,addr
-429260650,street,"Via Ennio Quirino Visconti",addr
-429260650,postcode,001963,addr
-429260650,housenumber,13,addrCT * FROM ways_tags WHERE id=429260650 and type='addr';
-
-#Via Ennio Quirino Visconti in Roma has a postal code of '00193' so this example was a typo and I will fix it 
-#With this code the correct postal code is now releted 
-
-UPDATE ways_tags 
-SET value = '00193' 
-WHERE id ='429260650' 
-AND key = 'postcode'; 
-~~~
-
-
-
-So we have found some minor error in postal code that can be handled one by one , but fortunately they do not seem to be to many. Note that this last code have to be modify to correct error and especially postal code can be on tags tables of ways as well as nodes.  
+But there are a couple of other issues, first there are postal code that do not really belong to this area and are postal code from an other region, like 84010 and 82011, and than there are some errors, like '00144;00159' or '001963'. Both problems should be handle easily one by one, as long they are , like in this case not so many.
+The code to replace this values are not reported here for presenting propose. For more information please refer to the sqlqueries.sql file.
 
 
 
@@ -167,7 +138,7 @@ FROM (SELECT * FROM nodes_tags UNION ALL
 WHERE tags.key == 'city'
 GROUP BY tags.value
 ORDER BY count DESC
-LIMIT 20;
+LIMIT 15;
 
 Roma,8844
 Frascati,159
@@ -184,11 +155,6 @@ Rocca di Papa,17
 Ariccia,16
 Formello,16
 Albano Laziale,14
-Anguillara Sabazia,14
-Grottaferrata,14
-Torvaianica,14
-Manziana,11
-Marino,10
 ~~~ 
 
 
