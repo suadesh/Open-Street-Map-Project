@@ -6,7 +6,7 @@
 For this study I will use the OSM XML file from Mapzen of my hometown, Rome. I am curious to perform some queries on this area. Before import the data into an SQL database , I will try to clean a bit the informations contained into this file, hoping to contribute at the openstreetmap database.               
 
 ## Encountered Problems 
-While looking into the file i will focus my attention to postal code and street's name. This is the typical issues that i have found using the clean.py code i wrote for.             
+While looking into the file i will focus my attention to postal code and street's name. This is the typical issues that I have found using the clean.py code I wrote for.             
 
 #### Postal Code's Problems 
 * Wrong postal code format entered , or integer in state of string  [ '00184 Roma' , I-00128, 159' in state of '00159' ]   
@@ -21,7 +21,7 @@ In Italian language the name of the street is at the end , while it begins with 
 *  Missing values ( 'Alberto Caldolo' in state of ' Via Alberto Caldolo') 
 
 ## Cleaning 
-I preferred to clean it before exporting to the csv file. I use a function like this below to modify the postal code and the street address, all the code is in the clean.py file. I work these two values error in different ways, while for postal code I write a function to replace the values if wrong with the good one. For streets, like the example code below, I wrote a functions that splits all the word contained into a list and replace the first one with the dictionary value , then joins the new list and create a new string. 
+I preferred to clean it before exporting to the csv file. I use a function like this below to modify the postal code and the street address, all the code is in clean.py file. I work these two values error in different ways, while for postal code I write a function to replace the values if wrong with the good one. For streets, like the example code below, I wrote a functions that splits all the word contained into a list and replace the first one with the dictionary value , then joins the new list and create a new string. 
 With the clean.py code , I export then 5 Csv files that I will import into the SQL database.
 
 ~~~python
@@ -44,7 +44,7 @@ def road(item,correctroad):
 
 ##  SQL DataBase 
 ### Postal Code
-I will now use the sql database to verify the postal code, I will look for value where key is equal to postcode or postal_code. Supposing that errors are rare i will look for the 15 less commun results: 
+I will now use the sql database to verify the postal code, I will look for value where key is equal to postcode or postal_code. Supposing that errors are rare Is will look for the 15 less commun results: 
 
 
 
@@ -76,9 +76,9 @@ Roma,1
 00057,2
 ~~~  
 
-Zip code in Rome are from 00118 to 00199, but there are a lot of small city all around that are contained in the area, and tat are actually part of Rome's Province , that begin with 00010 to 00079. So most of these results are actually correct.                      
-But there are a couple of other issues, first there are postal code that do not really belong to this area and are postal code from an other region, like 84010 and 82011, and than there are some errors, like '00144;00159' or '001963'. Both problems should be handle easily one by one, as long they are , like in this case not so many.
-The code to replace this values are not reported here for presenting propose. For more information please refer to the sqlqueries.sql file.
+Zip codes in Rome are from 00118 to 00199, but there are a lot of small city all around that are contained in the area, and that are actually part of Rome's Province , that begin with 00010 to 00079. So most of these results are actually correct.                      
+But there are a couple of other issues, first there are postal codes that do not really belong to this area and are postal code from an other region, like 84010 and 82011, and than there are some errors, like '00144;00159' or '001963'. Both problems should be handle one by one, as long they are, like in this example, not many.
+The code used to fix these issues are not reported here for presenting propose. For more information please refer to the sqlqueries.sql file included in this repository.
 
 
 
@@ -160,7 +160,7 @@ Albano Laziale,14
 
 
 
-As we can see all these cities are in Rome Area but we can see that while before we saw 107 times the postal code of 'Rocca di Papa', we have only 17. So it means that we have more often the name of the city in state of the postal code for tags. 
+As we can see all these cities are in Rome Area but we can see that while before we saw 107 times the postal code of "Rocca di Papa", we have only 17. So it means that we have more often the name of the city in state of the postal code for tags. 
 
 ## Overview Statistics
 ### Size
@@ -204,7 +204,7 @@ FROM (SELECT users.user,COUNT(*) as count
 660
 ~~~
 
-Almost 25% of the total users have appeared just once in this dataset
+Almost 25% of the total users have contributed just once to this dataset. 
 
 ###  More deeper on Amenities 
 #### Top 20 Amenities
@@ -239,8 +239,8 @@ parking_entrance|140
 place_of_worship|138
 ~~~ 
 
-As we can see there are much more drinking water point than place of worship. I know Rome and i know that we can drink water everywhere but I would expected this kind of results. Rome normally has more than 900 churches, so I this database miss something.         
-It very interesting also notice that for this data there are still 153 telephone, and in 2017, with smartphone era I wouldn't expect so.       
+As we can see there are much more drinking water point than place of worship. I know very well Rome and I know that we can drink water everywhere but I wouldn't expected this kind of results. Rome normally has more than 900 churches, so I think that we miss something.         
+It very interesting also notice that for this data there are still 153 telephone, and in 2017, in the smartphone era, I wouldn't expect so.       
 
 #### Kind of cuisine 
 I will now take a deeper look to the kind of cuisine for the amenity restaurant.
@@ -261,10 +261,10 @@ chinese|43
 japanese|17
 ~~~ 
 
-Tourists come to Italy to Italy to eat our cuisine, and Roman are not so open to foreign cuisine, and this results seems to confirm it. 
+Tourists come to Italy to eat Italian cuisine, and Roman are not so open to foreign cuisine, and this results seems to confirm it. 
 
 ## Further Ideas
-There are more and more smartphone application that use your position to propose a service around you, for example deliveroo or Foodora. This service in the first instance use the geo-localisation, then before confirming your order, ask you to verify the address and confirm it. So this data could be use to confirm the exact location of a node, using lat and lon and the update or create the informations of the building. 
+There are more and more smartphone application that use your position to propose a service around you, for example deliveroo or Foodora. This service in the first instance use the geo-localisation, then before confirming your order, ask you to verify the address and confirm it. So this data could be use to confirm the exact location of a node, using latitude and longitude and then update or create the informations of the building. 
 
 Benefits | Anticipated Problems  
 --- | --- 
